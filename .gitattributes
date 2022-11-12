@@ -7,4 +7,4 @@ Library/** filter=lfs diff=lfs merge=lfs -text
 Logs/** filter=lfs diff=lfs merge=lfs -text
 ProjectSettings/** filter=lfs diff=lfs merge=lfs -text
 UserSettings/** filter=lfs diff=lfs merge=lfs -text
-Packages/** filter=lfs diff=lfs merge=lfs -text
+tue123-single-game/** filter=lfs diff=lfs merge=lfs -text
