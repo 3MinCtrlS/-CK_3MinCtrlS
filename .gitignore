@@ -75,7 +75,13 @@ crashlytics-build.properties
 # Team added .ignore rule
 Library/
 Artifacts/
+PresssTheCommand/Library/Artifacts/
 PackageCache/
 PackageManager/
+ScriptAssemblies/
+PresssTheCommand/Library/ScriptAssemblies/
+Temp/
 Logs/
 *.log
+*.dll
+*.pdb

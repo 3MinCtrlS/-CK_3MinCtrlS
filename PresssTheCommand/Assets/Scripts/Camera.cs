@@ -29,7 +29,7 @@ public class Camera : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
-        Debug.Log("Player :: Initalize - Done");
+        Debug.Log("Camera :: Initalize - Done");
     }
 
 
@@ -37,6 +37,7 @@ public class Camera : MonoBehaviour
     // Player가 무빙 할 때에만 message를 토스하는 등 동작을 제어 할 수 있는지 검토 필요.
     private void MovePosition()
     {
+        // Position z를 -10으로 해 주어야 정상적인 Camera Sight이 작동함.
         transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -10);
     }
 }
