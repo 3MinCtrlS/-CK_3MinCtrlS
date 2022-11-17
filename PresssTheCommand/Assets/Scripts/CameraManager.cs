@@ -7,7 +7,7 @@ using UnityEngine;
 // 작성일 : 2022.11.14
 // 사용 방법 : MovePosition()을 이용하여 Player를 추적하게끔 동작.
 // 제작 사유 : Camera 객체 컨트롤.
-public class Camera : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     [SerializeField] private Transform player;
     private Vector3 offset;
