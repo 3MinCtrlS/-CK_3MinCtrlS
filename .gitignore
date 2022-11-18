@@ -75,6 +75,7 @@ crashlytics-build.properties
 # Team added .ignore rule
 PackageCache/
 ShaderCache/
+Library/
 Temp/
 Logs/
 *.log
