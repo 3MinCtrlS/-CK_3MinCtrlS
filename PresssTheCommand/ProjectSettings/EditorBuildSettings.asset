@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainUI.unity
+    guid: a1858dd0597a70249b735bb795fb1c44
+  - enabled: 1
+    path: Assets/Scenes/SelectModeUI.unity
+    guid: d9347bce2e0834748a4e1cfcd1e69620
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/PuzzlePentamino.unity
+    guid: a679af83834472d4cb0663dd07c1e56d
   m_configObjects: {}
