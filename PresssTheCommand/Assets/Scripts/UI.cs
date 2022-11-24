@@ -10,19 +10,11 @@ using UnityEngine.SceneManagement;
 // 제작 사유 : UI 객체 컨트롤.
 public class UI : MonoBehaviour
 {
-    [SerializeField] private GameObject popupTitle; //PopupTopbarTitleText
-    [SerializeField] private AudioListener audioListener;
-    [SerializeField] private GameObject soundButton; //ButtonSound
-    [SerializeField] private Slider soundSlider; //Slider
-
-    [SerializeField] private GameObject fullscreenButton; //ButtonF
-    [SerializeField] private GameObject windowdedButton; //ButtonW
-
     [SerializeField] private GameObject popup;
+    [SerializeField] private GameObject popupTitle; //PopupTopbarTitleText
     [SerializeField] private GameObject[] popupPannels;
 
     [SerializeField] private POPUP_TYPE currentPopup;
-    const string prefsVolume = "musicVolume";
     //creators.txt
 
     enum POPUP_TYPE
@@ -33,7 +25,7 @@ public class UI : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Initalize();
     }
@@ -42,24 +34,9 @@ public class UI : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
-        //popupTitle = GameObject.Find("PopupTopbarTitleText"); //PopupTopbarTitleText
-        //soundSlider = GameObject.Find("Slider").GetComponent<Slider>(); //Slider
-        //soundButton = GameObject.Find("ButtonSound"); //ButtonSound
-
-        if (!PlayerPrefs.HasKey(prefsVolume))
-        {
-            PlayerPrefs.SetFloat(prefsVolume, 1);
-            Load();
-        }
-        else
-        {
-            Load();
-        }
-
-        //fullscreenButton = GameObject.Find("ButtonF"); //ButtonF
-        //windowdedButton = GameObject.Find("ButtonW"); //ButtonW
-
         //popup = GameObject.Find("Popup");
+        //popupTitle = GameObject.Find("PopupTopbarTitleText"); //PopupTopbarTitleText
+ 
         //popupPannels = new GameObject[3];
         //popupPannels[(int)POPUP_TYPE.POPUP_TYPE_SETTING] = GameObject.Find("SettingPannel");
         //popupPannels[(int)POPUP_TYPE.POPUP_TYPE_CREATORS] = GameObject.Find("CreatorsPannel");
@@ -103,26 +80,8 @@ public class UI : MonoBehaviour
         Application.Quit();
     }
 
-    public void SoundOnOff()
+    public void MoveScene(string sceneName = "MainUI")
     {
-    }
-
-    public void SoundSlider()
-    {
-        AudioListener.volume = soundSlider.value;
-        Save();
-    }
-
-    private void Load()
-    {
-        soundSlider.value = PlayerPrefs.GetFloat(prefsVolume);
-    }
-    private void Save()
-    {
-        PlayerPrefs.SetFloat(prefsVolume, soundSlider.value);
-    }
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("SelectModeUI");
+        SceneManager.LoadScene(sceneName);
     }
 }
