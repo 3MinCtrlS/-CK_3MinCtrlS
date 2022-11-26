@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SHAPE_F
-  - SHAPE_I
+  - WallMinigame
   layers:
   - Default
   - TransparentFX

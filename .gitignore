@@ -81,3 +81,8 @@ Logs/
 *.log
 *.dll
 *.pdb
+
+*.psd
+*.psd.meta
+*.clip
+*.clip.meta
