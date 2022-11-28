@@ -18,10 +18,7 @@ public class SettingUI : MonoBehaviour
     private const string prefsVolume = "musicVolume";
 
     // Start is called before the first frame update
-    private void Start()
-    {
-        Initalize();
-    }
+    private void Start() { Initalize(); }
 
     // 초기 환경 셋팅
     private void Initalize()
@@ -36,13 +33,12 @@ public class SettingUI : MonoBehaviour
             LoadSetting();
         }
 
-        //popupTitle = GameObject.Find("PopupTopbarTitleText"); //PopupTopbarTitleText
         //soundSlider = GameObject.Find("Slider").GetComponent<Slider>(); //Slider
-        //soundButton = GameObject.Find("ButtonSound"); //ButtonSound
-        //fullscreenButton = GameObject.Find("ButtonF"); //ButtonF
-        //windowdedButton = GameObject.Find("ButtonW"); //ButtonW
-
-        Debug.Log("SettingUI :: Initalize - Done");
+        soundButton = GameObject.Find("ButtonSound"); //ButtonSound
+        fullscreenButton = GameObject.Find("ButtonF"); //ButtonF
+        windowdedButton = GameObject.Find("ButtonW"); //ButtonW
+        //GameManager.Instance.PopupUIOff();
+        //Debug.Log("SettingUI :: Initalize - Done");
     }
 
     public void SoundOnOff()
@@ -50,17 +46,23 @@ public class SettingUI : MonoBehaviour
     }
     public void SoundSlider()
     {
+        if (!soundSlider) return;
+
         AudioListener.volume = soundSlider.value;
         SaveSetting();
     }
 
     private void LoadSetting()
     {
+        if (!soundSlider) return;
+
         soundSlider.value = PlayerPrefs.GetFloat(prefsVolume);
         AudioListener.volume = soundSlider.value;
     }
     private void SaveSetting()
     {
+        if (!soundSlider) return;
+
         PlayerPrefs.SetFloat(prefsVolume, soundSlider.value);
     }
 }

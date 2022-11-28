@@ -30,7 +30,7 @@ public class ChapterSelect : MonoBehaviour
     {
         chapterPannelData = new ChapterSelectButton[3];
         chapterPannels = new GameObject[3];
-        Debug.Log("ChapterSelect :: Initalize - Done");
+        //Debug.Log("ChapterSelect :: Initalize - Done");
     }
 
 

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - WallMinigame
+  - UI
+  - MainPopup
+  - PopupContents
   layers:
   - Default
   - TransparentFX

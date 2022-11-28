@@ -10,10 +10,7 @@ public class ChapterSelectButton : MonoBehaviour
     [SerializeField] private GameObject chapterInfo;
 
     // Start is called before the first frame update
-    private void Start()
-    {
-        Initalize();
-    }
+    private void Start() { Initalize(); }
 
     // 초기 환경 셋팅
     private void Initalize()
@@ -26,7 +23,7 @@ public class ChapterSelectButton : MonoBehaviour
         SetChapterName("Chapter");
         SetChapterInfo("배우는 단축키 설명");
 
-        Debug.Log("ChapterSelectButton :: Initalize - Done");
+        //Debug.Log("ChapterSelectButton :: Initalize - Done");
     }
     GameObject GetChildWithName(string name)
     {

@@ -14,13 +14,13 @@ public class CameraManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Initalize();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         MovePosition();
     }
@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
-        Debug.Log("Camera :: Initalize - Done");
+        //Debug.Log("Camera :: Initalize - Done");
     }
 
 
