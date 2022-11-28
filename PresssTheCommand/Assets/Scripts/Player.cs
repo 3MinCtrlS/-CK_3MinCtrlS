@@ -14,14 +14,9 @@ public class Player : MonoBehaviour
     private Rigidbody2D m_playerRigidBody;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Initalize();
-    }
+    private void Start() { Initalize(); }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         DetectKeyInput();
     }
@@ -30,7 +25,7 @@ public class Player : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
-        Debug.Log("Player :: Initalize - Done");
+        //Debug.Log("Player :: Initalize - Done");
     }
 
     // 키 입력 감지
@@ -50,6 +45,10 @@ public class Player : MonoBehaviour
         {
             currentPosition.y += m_playerSpeed * Time.deltaTime;
         }
+        else if (Input.GetKey("a"))
+        {
+            currentPosition.x -= m_playerSpeed * Time.deltaTime;
+        }
         else if (Input.GetKey("s"))
         {
             currentPosition.y -= m_playerSpeed * Time.deltaTime;
@@ -58,11 +57,30 @@ public class Player : MonoBehaviour
         {
             currentPosition.x += m_playerSpeed * Time.deltaTime;
         }
-        else if (Input.GetKey("a"))
-        {
-            currentPosition.x -= m_playerSpeed * Time.deltaTime;
-        }
 
         transform.position = currentPosition;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "WallMinigame")
+        {
+            Debug.Log("Player :: OnTriggerEnter entered WallMinigame");
+
+            StartMiniGame();
+        }
+    }
+
+    private void StartMiniGame() 
+    {
+        GameManager.Instance.PauseGame();
+
+        int randomMinigame = GameManager.Instance.Random(1, 4);
+        MinigameManager.Instance.StartMinigame(randomMinigame);
+
+        //GameManager.Instance.ResumeGame();
+    }
+
+
+
 }

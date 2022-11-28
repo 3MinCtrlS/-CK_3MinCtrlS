@@ -13,13 +13,10 @@ public class PointLight : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-        Initalize();
-    }
+    private void Start() { Initalize(); }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         MovePosition();
     }
@@ -28,7 +25,7 @@ public class PointLight : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
-        Debug.Log("PointLight :: Initalize - Done");
+        //Debug.Log("PointLight :: Initalize - Done");
     }
 
 

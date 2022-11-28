@@ -8,6 +8,8 @@ TagManager:
   - UI
   - MainPopup
   - PopupContents
+  - MinigamePannel
+  - BlockChild
   layers:
   - Default
   - TransparentFX
