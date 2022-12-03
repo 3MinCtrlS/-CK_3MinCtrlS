@@ -70,3 +70,19 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+# Team added .ignore rule
+PackageCache/
+ShaderCache/
+Library/
+Temp/
+Logs/
+*.log
+*.dll
+*.pdb
+
+*.psd
+*.psd.meta
+*.clip
+*.clip.meta
