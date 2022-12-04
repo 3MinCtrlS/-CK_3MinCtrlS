@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // 작성자 : 전시은
@@ -11,6 +9,7 @@ public class HotKey : MonoBehaviour
     [SerializeField] private bool isControl;
     [SerializeField] private bool isShift;
     [SerializeField] private bool isAlt;
+    [SerializeField] private bool isAltI;
 
 
     // Start is called before the first frame update
@@ -27,17 +26,15 @@ public class HotKey : MonoBehaviour
     private void Initalize()
     {
         isControl = false;
-        isAlt = false;
         isShift = false;
-
-        GameObject plaidUI = GameObject.Find("PlaidUI");
-        plaidUI.SetActive(false);
+        isAlt = false;
+        isAltI = false; 
         //Debug.Log("HotKey :: Initalize - Done");
     }
 
     // 추후 리팩토링이 필요하다
     // 참고 : https://unity-programmer.tistory.com/9
-    private void DetectKey() 
+    private void DetectKey()
     {
         // 고정 단축키
         if (DetectControlKey() && Input.GetKeyDown(KeyCode.S)) { HotKeyCtrlS(); }
@@ -53,7 +50,8 @@ public class HotKey : MonoBehaviour
 
         // 선 자르기
         if (DetectControlKey() && Input.GetKeyDown(KeyCode.R)) { HotKeyCtrlR(); }
-        if (DetectAltKey() && Input.GetKeyDown(KeyCode.I) && Input.GetKeyDown(KeyCode.P)) { HotKeyAltIP(); }
+        if (DetectAltKey() && Input.GetKeyDown(KeyCode.I)) { HotKeyAltI(); }
+        if (isAltI && Input.GetKeyDown(KeyCode.P)) { HotKeyAltIP(); }
 
         // 색깔놀이
         if (Input.GetKeyDown(KeyCode.LeftBracket)) { HotKeyLeftBracket(); }
@@ -62,7 +60,7 @@ public class HotKey : MonoBehaviour
 
     /// Ctrl, Alt, Shift 키 감지 =====
 
-    private bool DetectControlKey() 
+    private bool DetectControlKey()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -79,22 +77,6 @@ public class HotKey : MonoBehaviour
         return isControl;
     }
 
-    private bool DetectAltKey()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            //Debug.Log("Alt key was pressed.");
-            isAlt = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            //Debug.Log("Alt key left.");
-            isAlt = false;
-        }
-
-        return isAlt;
-    }
 
     private bool DetectShiftKey()
     {
@@ -111,6 +93,22 @@ public class HotKey : MonoBehaviour
         }
 
         return isShift;
+    }
+    private bool DetectAltKey()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Debug.Log("Alt key was pressed.");
+            isAlt = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            //Debug.Log("Alt key left.");
+            isAlt = false;
+        }
+
+        return isAlt;
     }
 
     /// 고정 키 =====
@@ -139,11 +137,41 @@ public class HotKey : MonoBehaviour
     /// 펜타미노 =====
 
     // 펜타미노 : 레이어 복제하기(컨트롤+J)
-    private void HotKeyCtrlJ() 
+    private void HotKeyCtrlJ()
     {
         Debug.Log("Ctrl+J key was pressed.");
 
-        GameObject selectedObject = GetComponent<ShapeManager>().GetSelectedObject();
+
+        GameObject pentaminoManager = GameObject.Find("MinigamePentamino");
+
+        if (!pentaminoManager) return;
+        ShapeManager shapeManager = pentaminoManager.GetComponent<ShapeManager>();
+
+        if (!shapeManager) return;
+        GameObject selectedObject = shapeManager.GetSelectedObject();
+
+        Vector3 anchoredPos;
+        Camera mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        Canvas minigamePlayerPannel = GameObject.Find("MinigamePlayerPannel").GetComponent<Canvas>();
+
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(selectedObject.transform.parent.GetComponent<RectTransform>(), new Vector3(Screen.width, Screen.height, 1.0f), minigamePlayerPannel.renderMode == RenderMode.ScreenSpaceOverlay ? null : mainCamera, out anchoredPos);
+
+        // Manager에 등록하여 사용할 수 있게끔
+        Instantiate(selectedObject, anchoredPos, Quaternion.identity);
+    }
+
+    private void HotKeyCtrlJTest()
+    {
+        Debug.Log("Ctrl+J key was pressed.");
+
+        GameObject pentaminoManager = GameObject.Find("MinigamePentamino");
+
+        if (!pentaminoManager) return;
+        ShapeManager shapeManager = pentaminoManager.GetComponent<ShapeManager>();
+
+        if (!shapeManager) return;
+        GameObject selectedObject = shapeManager.GetSelectedObject();
+
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
@@ -156,28 +184,52 @@ public class HotKey : MonoBehaviour
         Debug.Log("Ctrl+J key was pressed.");
 
         GameObject selectedObject = GetComponent<ShapeManager>().GetSelectedObject();
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-        // Manager에 등록하여 사용할 수 있게끔
-        Instantiate(selectedObject, mousePos2D, Quaternion.identity);
+        Camera raycastCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        Vector3 offset = new Vector3(5, -5, 0);
+        Vector3 pos = Input.mousePosition + offset;
+        pos.z = 0;
+
+        Instantiate(selectedObject, raycastCamera.ScreenToWorldPoint(pos), Quaternion.identity);
     }
 
     // 펜타미노 :자유변형(컨트롤+T)
     private void HotKeyCtrlT()
-    { 
+    {
     }
 
     /// 선 자르기 =====
 
     // 선 자르기 : 표시자 보이기/숨기기(컨트롤+R)
     private void HotKeyCtrlR()
-    { 
+    {
+        GameObject cuttingLine = GameObject.Find("MinigameCuttingLine");
+        if(cuttingLine) cuttingLine.GetComponent<MinigameCuttingLine>().PlaidUIActivation();
+    }
+
+    // 선 자르기 : 선택한 영역 잘라내기(ALT+I+P)
+    private void HotKeyAltI()
+    {
+        if (isAlt) 
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                Debug.Log("Alt I key was pressed.");
+                isAltI = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.I))
+            {
+                isAltI = false;
+            }
+        }
     }
 
     // 선 자르기 : 선택한 영역 잘라내기(ALT+I+P)
     private void HotKeyAltIP()
     {
+        GameObject cuttingLine = GameObject.Find("MinigameCuttingLine");
+        if (cuttingLine) cuttingLine.GetComponent<MinigameCuttingLine>().SetAltIP(true);
     }
 
     /// 알맞게 색깔 채워 넣기 =====
@@ -186,8 +238,6 @@ public class HotKey : MonoBehaviour
 
     private void HotKeyG()
     {
-        GameObject plaidUI = GameObject.Find("PlaidUI");
-        plaidUI.SetActive(true);
     }
 
     /// 색깔놀이 =====

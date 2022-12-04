@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MinigameManager : MonoBehaviour
 {
     private static MinigameManager instance = null;
@@ -9,6 +10,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private GameObject   m_minigamePopup;
     [SerializeField] private GameObject[] m_minigame;
     [SerializeField] private GameObject   m_minigameTitleText;
+    [SerializeField] private bool m_minigameClear;
 
     private string[] m_minigameTitleString;
     private const string m_minigamePopupName = "MinigameCanvas";
@@ -62,6 +64,7 @@ public class MinigameManager : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
+        m_minigameClear = false;
         m_currentMinigame = MINIGAME_TYPE.MINIGAME_NONE;
 
         m_minigame = new GameObject[5];
@@ -116,14 +119,20 @@ public class MinigameManager : MonoBehaviour
 
     public void StopMinigame() 
     {
-        m_minigame[(int)m_currentMinigame].SetActive(false);
+        if (m_minigame[(int)m_currentMinigame]) 
+        {
+            m_minigame[(int)m_currentMinigame].SetActive(false);
+        }
         m_minigamePopup.SetActive(false);
     }
 
     private void PlayPentamino() 
     {
         Debug.Log("MinigameManager :: PlayPentamino");
-        m_minigame[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO].SetActive(true);
+        if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO]) 
+        {
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO].SetActive(true);
+        }
         m_minigameTitleText.GetComponent< TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO]);
 
 
@@ -132,7 +141,10 @@ public class MinigameManager : MonoBehaviour
     private void PlayCuttingline()
     {
         Debug.Log("MinigameManager :: PlayCuttingline");
-        m_minigame[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE].SetActive(true);
+        if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE])
+        {
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE].SetActive(true);
+        }
         m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE]);
 
     }
@@ -140,15 +152,20 @@ public class MinigameManager : MonoBehaviour
     private void PlayPaint()
     {
         Debug.Log("MinigameManager :: PlayPaint");
-        m_minigame[(int)MINIGAME_TYPE.MINIGAME_PAINT].SetActive(true);
+        if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_PAINT]) 
+        {
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_PAINT].SetActive(true);
+        }
         m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_PAINT]);
     }
 
     private void PlayBrush()
     {
         Debug.Log("MinigameManager :: PlayBrush");
-        m_minigame[(int)MINIGAME_TYPE.MINIGAME_BRUSH].SetActive(true);
+        if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_BRUSH]) 
+        {
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_BRUSH].SetActive(true);
+        }
         m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_BRUSH]);
     }
-
 }
