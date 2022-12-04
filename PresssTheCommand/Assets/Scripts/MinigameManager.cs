@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -18,6 +18,9 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private MINIGAME_TYPE m_currentMinigame;
 
     Animator m_minigamePopupAnimator = null;
+
+    [SerializeField] private GameObject m_resultUI;
+    [SerializeField] private GameObject m_restartButton;
 
 
 
@@ -88,6 +91,11 @@ public class MinigameManager : MonoBehaviour
         m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_BRUSH] = "»ö±ò³îÀÌ";
 
         m_minigamePopup = GameObject.Find(m_minigamePopupName);
+
+        m_resultUI = GameObject.Find("MinigameResultUI");
+        m_restartButton = GameObject.Find("MinigameRestartButton");
+        if (m_resultUI) m_resultUI.SetActive(false);
+
         GameManager.Instance.PopupUIOff();
 
         //m_minigamePopupAnimator = GameObject.Find(m_minigamePanelName).GetComponent<Animator>();
@@ -117,25 +125,36 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
-    public void StopMinigame() 
+    public void RestartMinigame()
+    {
+        if (m_resultUI) m_resultUI.SetActive(false);
+        if (m_restartButton) m_restartButton.SetActive(false);
+
+        StartMinigame((int)m_currentMinigame);
+    }
+
+        public void StopMinigame()
     {
         if (m_minigame[(int)m_currentMinigame]) 
         {
             m_minigame[(int)m_currentMinigame].SetActive(false);
+            if (m_resultUI) m_resultUI.SetActive(false);
+            if (m_restartButton) m_resultUI.SetActive(false);
         }
         m_minigamePopup.SetActive(false);
     }
 
-    private void PlayPentamino() 
+    private void PlayPentamino()
     {
         Debug.Log("MinigameManager :: PlayPentamino");
         if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO]) 
         {
             m_minigame[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO].SetActive(true);
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO]
+                .GetComponent<MinigamePentamino>().RestartMinigame();
         }
-        m_minigameTitleText.GetComponent< TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO]);
-
-
+        m_minigameTitleText.GetComponent< TMPro.TextMeshProUGUI>()
+            .SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_PENTAMINO]);
     }
 
     private void PlayCuttingline()
@@ -144,8 +163,11 @@ public class MinigameManager : MonoBehaviour
         if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE])
         {
             m_minigame[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE].SetActive(true);
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE]
+                .GetComponent<MinigameCuttingLine>().RestartMinigame();
         }
-        m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE]);
+        m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>()
+            .SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_CUTTINGLINE]);
 
     }
 
@@ -155,8 +177,11 @@ public class MinigameManager : MonoBehaviour
         if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_PAINT]) 
         {
             m_minigame[(int)MINIGAME_TYPE.MINIGAME_PAINT].SetActive(true);
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_PAINT]
+                .GetComponent<MinigamePaint>().RestartMinigame();
         }
-        m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_PAINT]);
+        m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>()
+            .SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_PAINT]);
     }
 
     private void PlayBrush()
@@ -165,7 +190,24 @@ public class MinigameManager : MonoBehaviour
         if (m_minigame[(int)MINIGAME_TYPE.MINIGAME_BRUSH]) 
         {
             m_minigame[(int)MINIGAME_TYPE.MINIGAME_BRUSH].SetActive(true);
+            m_minigame[(int)MINIGAME_TYPE.MINIGAME_BRUSH]
+                .GetComponent<MinigameBrush>().RestartMinigame();
         }
-        m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>().SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_BRUSH]);
+        m_minigameTitleText.GetComponent<TMPro.TextMeshProUGUI>()
+            .SetText(m_minigameTitleString[(int)MINIGAME_TYPE.MINIGAME_BRUSH]);
+    }
+
+    public void SetResult(string titleText, string infoText, Color pannelBGColor , bool buttonActivate) 
+    {
+        if (!m_resultUI) return;
+        m_resultUI.SetActive(true);
+
+        GameObject GameResultTitle = GameObject.Find("GameResultTitle"); ;
+        GameObject GameResultInformation = GameObject.Find("GameResultInformation");
+
+        m_resultUI.GetComponent<Image>().color = pannelBGColor;
+        if (GameResultTitle) GameResultTitle.GetComponent<TMPro.TextMeshProUGUI>().SetText(titleText);
+        if (GameResultInformation) GameResultInformation.GetComponent<TMPro.TextMeshProUGUI>().SetText(infoText);
+        if (m_restartButton) m_restartButton.SetActive(buttonActivate);
     }
 }

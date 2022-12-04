@@ -11,9 +11,6 @@ public class MinigameCuttingLine : MonoBehaviour
     [SerializeField] private GameObject m_questTipText;
     [SerializeField] private GameObject m_plaidUI;
 
-    [SerializeField] private GameObject m_resultUI;
-    [SerializeField] private GameObject m_restartButton;
-
     [SerializeField] private Slider m_slider;
     [SerializeField] private GameObject m_silderFill;
 
@@ -38,17 +35,12 @@ public class MinigameCuttingLine : MonoBehaviour
         m_questText = GameObject.Find("QuestText");
         m_questTipText = GameObject.Find("QuestTipText");
 
-        m_plaidUI = GameObject.Find("PlaidUI");
+        //m_plaidUI = GameObject.Find("PlaidUI");
         if (m_plaidUI) m_plaidUI.SetActive(false);
 
         m_value = 0.6f;
         m_slider = m_cuttingObject.GetComponent<Slider>();
         m_silderFill = GameObject.Find("CuttingObjectSliderFill");
-
-        m_resultUI = GameObject.Find("CuttingLineResultUI");
-        m_restartButton = GameObject.Find("GameRestartButton");
-
-        if (m_resultUI) m_resultUI.SetActive(false);
 
         SliderActivation();
         SetValue(m_value);
@@ -57,10 +49,11 @@ public class MinigameCuttingLine : MonoBehaviour
 
     public void PlaidUIActivation() 
     {
-        if (!m_plaidUI) return;
-
-        if (m_plaidUI.activeSelf) m_plaidUI.SetActive(false);
-        else m_plaidUI.SetActive(true);
+        if (m_plaidUI) 
+        {
+            if (m_plaidUI.activeSelf) m_plaidUI.SetActive(false);
+            else m_plaidUI.SetActive(true);
+        }
     }
     private void SliderActivation()
     {
@@ -109,7 +102,7 @@ public class MinigameCuttingLine : MonoBehaviour
 
         if (m_currentWidthText) 
         {
-            string currentWidthText = string.Format("현재 : {0:F2}cm", m_slider.value * 10);
+            string currentWidthText = string.Format("현재 길이 : {0:F2}cm", m_slider.value * 10);
             m_currentWidthText.GetComponent<TMPro.TextMeshProUGUI>().SetText(currentWidthText);
         }
     }
@@ -156,41 +149,23 @@ public class MinigameCuttingLine : MonoBehaviour
 
     private void CuttingLineSuccess() 
     {
-        if (!m_resultUI) return;
-        m_resultUI.SetActive(true);
-
-        GameObject GameResultTitle = GameObject.Find("CuttingObjectSliderFill"); ;
-        GameObject GameResultInformation = GameObject.Find("CuttingObjectSliderFill");
-
-        string gameoverTitle = "Game Clear!";
-        string gameoverInfomation = "종료 단축키를 이용해서 게임을 종료하세요.";
+        string titleText = "Game Clear!";
+        string infoText = "종료 단축키를 이용해서 게임을 종료하세요.";
         Color successColor = new Color32(151, 210, 88, 200);
 
-        m_resultUI.GetComponent<Image>().color = successColor;
-        if (GameResultTitle) GameResultTitle.GetComponent<TMPro.TextMeshProUGUI>().SetText(gameoverTitle);
-        if (GameResultInformation) GameResultInformation.GetComponent<TMPro.TextMeshProUGUI>().SetText(gameoverInfomation);
-        if (m_restartButton) m_restartButton.SetActive(false);
+        MinigameManager.Instance.SetResult(titleText, infoText, successColor, false);
     }
 
     private void CuttingLineFail()
     {
-        if (!m_resultUI) return;
-        m_resultUI.SetActive(true);
-
-        GameObject GameResultTitle = GameObject.Find("GameResultTitle"); ;
-        GameObject GameResultInformation = GameObject.Find("GameResultInformation");
-
-        string gameoverTitle = "Game Over!";
-        string gameoverInfomation = "우측 하단의 재도전 버튼을 누르세요!";
+        string titleText = "Game Over!";
+        string infoText = "우측 하단의 재도전 버튼을 누르세요!";
         Color failColor = new Color32(255, 13, 13, 200);
 
-        m_resultUI.GetComponent<Image>().color = failColor;
-        if (GameResultTitle) GameResultTitle.GetComponent<TMPro.TextMeshProUGUI>().SetText(gameoverTitle);
-        if (GameResultInformation) GameResultInformation.GetComponent<TMPro.TextMeshProUGUI>().SetText(gameoverInfomation);
-        if (m_restartButton) m_restartButton.SetActive(true);
+        MinigameManager.Instance.SetResult(titleText, infoText, failColor, true);
     }
 
-    public void CuttingLineRestart() 
+    public void RestartMinigame() 
     {
         Initalize();
     }
