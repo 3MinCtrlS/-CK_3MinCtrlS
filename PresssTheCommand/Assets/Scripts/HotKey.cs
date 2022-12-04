@@ -47,6 +47,7 @@ public class HotKey : MonoBehaviour
 
         // 알맞게 색깔 채워 넣기
         if (Input.GetKeyDown(KeyCode.G)) { HotKeyG(); }
+        if (DetectAltKey() && Input.GetKeyDown(KeyCode.Delete)) { HotKeyAltDelete(); }
 
         // 선 자르기
         if (DetectControlKey() && Input.GetKeyDown(KeyCode.R)) { HotKeyCtrlR(); }
@@ -238,6 +239,13 @@ public class HotKey : MonoBehaviour
 
     private void HotKeyG()
     {
+        GameObject paint = GameObject.Find("MinigamePaint");
+        if (paint) paint.GetComponent<MinigamePaint>().ButtonActivate();
+    }
+    private void HotKeyAltDelete()
+    {
+        GameObject paint = GameObject.Find("MinigamePaint");
+        if (paint) paint.GetComponent<MinigamePaint>().SetUserData();
     }
 
     /// 색깔놀이 =====

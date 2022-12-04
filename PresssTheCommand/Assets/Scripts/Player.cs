@@ -75,12 +75,8 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.PauseGame();
 
-        int randomMinigame = GameManager.Instance.Random(1, 4);
+        // MinigameBrush 파트를 제작 보류하게 되어 1~3으로 축소.
+        int randomMinigame = GameManager.Instance.Random(1, 100) % 4 + 1;
         MinigameManager.Instance.StartMinigame(randomMinigame);
-
-        //GameManager.Instance.ResumeGame();
     }
-
-
-
 }
