@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WallMinigame
+  - UI
+  - MainPopup
+  - PopupContents
+  - MinigamePannel
+  - BlockChild
   layers:
   - Default
   - TransparentFX
@@ -40,4 +46,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Maps
+    uniqueID: 3150304149
+    locked: 0
+  - name: Object
+    uniqueID: 4165193103
+    locked: 0
+  - name: Player
+    uniqueID: 3998821815
+    locked: 0
+  - name: Shadow
+    uniqueID: 2805703549
+    locked: 0
+  - name: UI
+    uniqueID: 2808104295
     locked: 0
