@@ -77,6 +77,7 @@ PackageCache/
 ShaderCache/
 Library/
 Temp/
+Build/
 Logs/
 *.log
 *.dll

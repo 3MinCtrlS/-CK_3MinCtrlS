@@ -32,7 +32,7 @@ public class MinigameManager : MonoBehaviour
             instance = this;
 
             //씬 전환이 되더라도 파괴되지 않게 한다.
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             Debug.Log("MinigameManager :: Make instance - Done");
         }
         else
@@ -110,18 +110,18 @@ public class MinigameManager : MonoBehaviour
 
         switch ((MINIGAME_TYPE)minigameType) 
         {
-            case MINIGAME_TYPE.MINIGAME_PENTAMINO:
-                PlayPentamino();
-                break;
+            //case MINIGAME_TYPE.MINIGAME_PENTAMINO:
+            //    PlayPentamino();
+            //    break;
             case MINIGAME_TYPE.MINIGAME_CUTTINGLINE:
                 PlayCuttingline();
                 break;
             case MINIGAME_TYPE.MINIGAME_PAINT:
                 PlayPaint();
                 break;
-            case MINIGAME_TYPE.MINIGAME_BRUSH:
-                PlayBrush();
-                break;
+            //case MINIGAME_TYPE.MINIGAME_BRUSH:
+            //    PlayBrush();
+            //    break;
         }
     }
 
@@ -209,5 +209,26 @@ public class MinigameManager : MonoBehaviour
         if (GameResultTitle) GameResultTitle.GetComponent<TMPro.TextMeshProUGUI>().SetText(titleText);
         if (GameResultInformation) GameResultInformation.GetComponent<TMPro.TextMeshProUGUI>().SetText(infoText);
         if (m_restartButton) m_restartButton.SetActive(buttonActivate);
+    }
+
+    public bool GetMinigameClear() 
+    {
+        if (m_minigameClear) 
+        {
+            GameObject wall = GameObject.Find("Player").GetComponent<Player>().GetTriggeredObject();
+
+            if (wall)
+            {
+                Destroy(wall);
+            }
+            m_minigameClear = false;
+            return true;
+        }
+
+        return m_minigameClear;
+    }
+    public void SetMinigameClear(bool isCleared)
+    {
+        m_minigameClear = isCleared;
     }
 }

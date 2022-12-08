@@ -131,8 +131,13 @@ public class HotKey : MonoBehaviour
     private void HotKeyCtrlQ()
     {
         Debug.Log("Ctrl+Q key was pressed.");
-        GameManager.Instance.ResumeGame();
-        MinigameManager.Instance.StopMinigame();
+
+        // 미니게임 종료가 체크될 시에만 사용 가능.
+        if (MinigameManager.Instance.GetMinigameClear()) 
+        {
+            GameManager.Instance.ResumeGame();
+            MinigameManager.Instance.StopMinigame();
+        }
     }
 
     /// 펜타미노 =====

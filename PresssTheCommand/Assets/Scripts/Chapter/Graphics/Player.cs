@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 // 작성자 : 전시은
@@ -12,6 +13,9 @@ public class Player : MonoBehaviour
     // SerializeField : 직렬화. 인스펙터에서 접근 가능하지만, 외부 스크립트에서는 접근이 불가능하도록 막는 작업.
     [SerializeField] private float m_playerSpeed = 1f;
     private Rigidbody2D m_playerRigidBody;
+    private GameObject m_triggeredObject;
+    [SerializeField] private GameObject m_clearScene;
+    [SerializeField] private GameObject m_minigameCanvas;
 
 
     private void Start() { Initalize(); }
@@ -25,6 +29,10 @@ public class Player : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
+        if (m_clearScene) 
+        {
+            m_clearScene.GetComponent<Image>().enabled = false;
+        }
         //Debug.Log("Player :: Initalize - Done");
     }
 
@@ -67,8 +75,22 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player :: OnTriggerEnter entered WallMinigame");
 
+            m_triggeredObject = other.gameObject;
             StartMiniGame();
         }
+        if (other.name == "Goal") 
+        {
+            if (m_clearScene)
+            {
+                m_minigameCanvas.SetActive(true);
+                m_clearScene.GetComponent<Image>().enabled = true;
+            }
+        }
+    }
+
+    public GameObject GetTriggeredObject() 
+    {
+        return m_triggeredObject;
     }
 
     private void StartMiniGame() 
@@ -76,7 +98,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.PauseGame();
 
         // MinigameBrush 파트를 제작 보류하게 되어 1~3으로 축소.
-        int randomMinigame = GameManager.Instance.Random(1, 100) % 4 + 1;
+        int randomMinigame = GameManager.Instance.Random(1, 100) % 2 + 2;
         MinigameManager.Instance.StartMinigame(randomMinigame);
     }
 }
