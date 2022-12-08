@@ -126,4 +126,11 @@ public class PopupUI : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void NextHint() 
+    {
+    }
+    public void PrevHint()
+    {
+    }
 }
