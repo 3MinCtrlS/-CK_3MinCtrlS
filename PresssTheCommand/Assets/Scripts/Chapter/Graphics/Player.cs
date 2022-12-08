@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D m_playerRigidBody;
     private GameObject m_triggeredObject;
     [SerializeField] private GameObject m_clearScene;
+    [SerializeField] private GameObject m_clearButton;
     [SerializeField] private GameObject m_minigameCanvas;
 
 
@@ -32,6 +33,11 @@ public class Player : MonoBehaviour
         if (m_clearScene) 
         {
             m_clearScene.GetComponent<Image>().enabled = false;
+        }
+        if (m_clearButton) 
+        {
+            m_clearButton.GetComponent<Image>().enabled = false;
+            m_clearButton.GetComponent<Button>().enabled = false;
         }
         //Debug.Log("Player :: Initalize - Done");
     }
@@ -85,6 +91,12 @@ public class Player : MonoBehaviour
                 m_minigameCanvas.SetActive(true);
                 m_clearScene.GetComponent<Image>().enabled = true;
             }
+            if (m_clearButton)
+            {
+                m_clearButton.GetComponent<Image>().enabled = true;
+                m_clearButton.GetComponent<Button>().enabled = true;
+            }
+
         }
     }
 

@@ -749,7 +749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50955300337041852, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 50955300337041852, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
       propertyPath: m_TagString
@@ -934,6 +934,18 @@ PrefabInstance:
     - target: {fileID: 5155018718146954228, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155018718881340294, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155018718881340294, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155018718881340294, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5155018718888169125, guid: 00b834a06b8d83b43b3e0ec4cfae4ce8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

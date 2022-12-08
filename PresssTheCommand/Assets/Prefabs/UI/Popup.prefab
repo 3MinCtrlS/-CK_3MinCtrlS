@@ -336,6 +336,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_currentPopupType: 0
+  m_helpImage: {fileID: 4615376325914136093}
+  m_currentHelpCount: 1
+  m_helpImages:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 9781afa3a07306a42ba7613a355c4a25, type: 3}
+  - {fileID: 21300000, guid: d70f43c1bf229d74497de8bedd3409cb, type: 3}
+  - {fileID: 21300000, guid: a2d47f01148f0834999f81be246d6d5a, type: 3}
+  - {fileID: 21300000, guid: 3a164ecc749c58742b09da331bda1c9e, type: 3}
+  - {fileID: 21300000, guid: 9ed9239ef20a8674cab69873458e3e69, type: 3}
+  - {fileID: 21300000, guid: 53f0afc592d45e843b63c9bb41578f0b, type: 3}
+  - {fileID: 21300000, guid: 67b828eba40fc194abd8823a29c447a6, type: 3}
+  - {fileID: 21300000, guid: 030f96104f7cbb44ebad270e56743765, type: 3}
+  - {fileID: 21300000, guid: e25b4158eac7a32488af5c9362f173bf, type: 3}
+  - {fileID: 21300000, guid: 15cf195a91ee4c7418054a2af62696e5, type: 3}
+  - {fileID: 21300000, guid: ff4d7c8a08723ad41a394cbc27e3d12b, type: 3}
+  - {fileID: 21300000, guid: 1318eb4a5370a60428165c61a870a1de, type: 3}
+  - {fileID: 21300000, guid: 24caf77c793894747824d9615f29ab61, type: 3}
+  - {fileID: 21300000, guid: 300bcaa41642b9e479e528dc67aabaf7, type: 3}
 --- !u!114 &2650767137521369872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1199,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5155018718146954228}
     m_Modifications:
+    - target: {fileID: 754419495967504189, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8839344094642024886}
+    - target: {fileID: 754419495967504189, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PrevHint
+      objectReference: {fileID: 0}
+    - target: {fileID: 754419495967504189, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PopupUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840250663498521578, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8839344094642024886}
+    - target: {fileID: 1840250663498521578, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextHint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840250663498521578, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PopupUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2537502371019163397, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1265,6 +1307,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6912181794287021111, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8839344094642024886}
+    - target: {fileID: 6912181794287021111, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePopup
+      objectReference: {fileID: 0}
     - target: {fileID: 8756103700512921590, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
       propertyPath: m_Name
       value: GameHelpPannel
@@ -1282,5 +1332,10 @@ PrefabInstance:
 --- !u!224 &6485727211855941967 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2537502371019163397, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
+  m_PrefabInstance: {fileID: 8734426359009187402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4615376325914136093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4124160568587262039, guid: 99e80b1b5428856468c9168fd9780d1b, type: 3}
   m_PrefabInstance: {fileID: 8734426359009187402}
   m_PrefabAsset: {fileID: 0}

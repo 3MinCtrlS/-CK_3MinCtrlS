@@ -14,6 +14,13 @@ public class PopupUI : MonoBehaviour
 
     [SerializeField] private POPUP_TYPE m_currentPopupType;
     [SerializeField] private const int m_popupCount = 10;
+
+    [SerializeField] private GameObject m_helpImage;
+    [SerializeField] private const int m_helpCount = 14;
+    [SerializeField] private int m_currentHelpCount = 1;
+    [SerializeField] private Sprite[] m_helpImages;
+
+
     private string[] m_popupTitleText = null;
     //creators.txt
 
@@ -129,8 +136,19 @@ public class PopupUI : MonoBehaviour
 
     public void NextHint() 
     {
+        if (m_helpImage) 
+        {
+            m_currentHelpCount++;
+            m_helpImage.GetComponent<Image>().sprite = m_helpImages[m_currentHelpCount];
+        }
     }
     public void PrevHint()
     {
+        if (m_helpImage)
+        {
+            m_currentHelpCount--;
+            m_helpImage.GetComponent<Image>().sprite = m_helpImages[m_currentHelpCount];
+        }
+
     }
 }
