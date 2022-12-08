@@ -184,6 +184,7 @@ public class MinigamePaint : MonoBehaviour
         string infoText = "종료 단축키를 이용해서 게임을 종료하세요.";
         Color successColor = new Color32(151, 210, 88, 200);
 
+        MinigameManager.Instance.SetMinigameClear(true);
         MinigameManager.Instance.SetResult(titleText, infoText, successColor, false);
     }
     private void PaintFail()
