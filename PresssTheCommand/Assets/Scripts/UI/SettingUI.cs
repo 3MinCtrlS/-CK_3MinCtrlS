@@ -34,9 +34,9 @@ public class SettingUI : MonoBehaviour
         }
 
         //soundSlider = GameObject.Find("Slider").GetComponent<Slider>(); //Slider
-        soundButton = GameObject.Find("ButtonSound"); //ButtonSound
-        fullscreenButton = GameObject.Find("ButtonF"); //ButtonF
-        windowdedButton = GameObject.Find("ButtonW"); //ButtonW
+        //soundButton = GameObject.Find("ButtonSound"); //ButtonSound
+        //fullscreenButton = GameObject.Find("ButtonF"); //ButtonF
+        //windowdedButton = GameObject.Find("ButtonW"); //ButtonW
         //GameManager.Instance.PopupUIOff();
         //Debug.Log("SettingUI :: Initalize - Done");
     }
@@ -46,23 +46,36 @@ public class SettingUI : MonoBehaviour
     }
     public void SoundSlider()
     {
-        if (!soundSlider) return;
-
-        AudioListener.volume = soundSlider.value;
-        SaveSetting();
+        if (soundSlider)
+        {
+            AudioListener.volume = soundSlider.value;
+            SaveSetting();
+        }
     }
 
     private void LoadSetting()
     {
-        if (!soundSlider) return;
-
-        soundSlider.value = PlayerPrefs.GetFloat(prefsVolume);
-        AudioListener.volume = soundSlider.value;
+        if (soundSlider)
+        {
+            soundSlider.value = PlayerPrefs.GetFloat(prefsVolume);
+            AudioListener.volume = soundSlider.value;
+        }
     }
     private void SaveSetting()
     {
-        if (!soundSlider) return;
+        if (soundSlider)
+        {
+            PlayerPrefs.SetFloat(prefsVolume, soundSlider.value);
+        }
+    }
 
-        PlayerPrefs.SetFloat(prefsVolume, soundSlider.value);
+    public void FullScreen() 
+    {
+        Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen);
+    }
+
+    public void Windowed() 
+    {
+        Screen.fullScreenMode = FullScreenMode.Windowed;
     }
 }

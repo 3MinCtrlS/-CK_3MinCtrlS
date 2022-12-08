@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             instance = this;
 
             //씬 전환이 되더라도 파괴되지 않게 한다.
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             Debug.Log("GameManager :: Make instance - Done");
         }
         else
