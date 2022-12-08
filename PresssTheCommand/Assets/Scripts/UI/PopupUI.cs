@@ -138,7 +138,14 @@ public class PopupUI : MonoBehaviour
     {
         if (m_helpImage) 
         {
-            m_currentHelpCount++;
+            if (m_currentHelpCount == m_helpCount)
+            {
+                m_currentHelpCount = 1;
+            }
+            else 
+            {
+                m_currentHelpCount++;
+            }
             m_helpImage.GetComponent<Image>().sprite = m_helpImages[m_currentHelpCount];
         }
     }
@@ -146,7 +153,14 @@ public class PopupUI : MonoBehaviour
     {
         if (m_helpImage)
         {
-            m_currentHelpCount--;
+            if (m_currentHelpCount == 1)
+            {
+                m_currentHelpCount = 14;
+            }
+            else
+            {
+                m_currentHelpCount--;
+            }
             m_helpImage.GetComponent<Image>().sprite = m_helpImages[m_currentHelpCount];
         }
 
