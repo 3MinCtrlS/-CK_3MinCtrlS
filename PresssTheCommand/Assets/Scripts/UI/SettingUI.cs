@@ -76,6 +76,7 @@ public class SettingUI : MonoBehaviour
 
     public void Windowed() 
     {
-        Screen.fullScreenMode = FullScreenMode.Windowed;
+        //Screen.fullScreenMode = FullScreenMode.Windowed;
+        Screen.SetResolution(1366, 768, FullScreenMode.FullScreenWindow);
     }
 }
