@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     // 초기 환경 셋팅
     private void Initalize()
     {
+        GetComponent<Rigidbody2D>().freezeRotation = true;
+
         if (m_clearScene) 
         {
             m_clearScene.GetComponent<Image>().enabled = false;
