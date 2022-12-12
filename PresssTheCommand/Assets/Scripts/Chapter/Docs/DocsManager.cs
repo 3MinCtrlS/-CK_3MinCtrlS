@@ -19,6 +19,10 @@ public class DocsManager : MonoBehaviour
     [SerializeField] private float m_timer;
     [SerializeField] private GameObject m_timerText;
 
+    [SerializeField] private GameObject m_docsText;
+    [SerializeField] private GameObject m_ErrorPanel;
+    [SerializeField] private GameObject m_HintPanel;
+
 
 
     void Awake()
@@ -61,6 +65,9 @@ public class DocsManager : MonoBehaviour
         m_timer = 105.0f;
         SetTimerUI();
         StartCoroutine(Timer());
+
+        // string docsString = GetComponent<ReadText>().m_docsString;
+        // m_docsText.GetComponent<TMPro.TextMeshProUGUI>().SetText(docsString);
     }
 
     public void RestartMinigame()
@@ -103,7 +110,7 @@ public class DocsManager : MonoBehaviour
         }
     }
 
-    IEnumerator Timer()
+    private IEnumerator Timer()
     {
         m_timer -= Time.deltaTime * 10;
         SetTimerUI();
