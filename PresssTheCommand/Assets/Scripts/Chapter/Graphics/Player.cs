@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private GameObject m_triggeredObject;
     [SerializeField] private GameObject m_clearScene;
     [SerializeField] private GameObject m_clearButton;
-    [SerializeField] private GameObject m_minigameCanvas;
+    [SerializeField] private GameObject m_cutSceneCanvas;
 
 
     private void Start() { Initalize(); }
@@ -90,7 +90,8 @@ public class Player : MonoBehaviour
         {
             if (m_clearScene)
             {
-                m_minigameCanvas.SetActive(true);
+                m_cutSceneCanvas.SetActive(true);
+                m_cutSceneCanvas.GetComponent<CutScene>().ClearScene();
                 m_clearScene.GetComponent<Image>().enabled = true;
             }
             if (m_clearButton)

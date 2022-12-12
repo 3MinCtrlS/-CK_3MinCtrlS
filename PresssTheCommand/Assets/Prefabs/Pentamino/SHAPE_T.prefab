@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2151424213958171366}
   - component: {fileID: 4660826026727557145}
   m_Layer: 5
-  m_Name: SHAPE_T-3
+  m_Name: SHAPE_T-2
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: -39.999924}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2151424213958171366
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1661970961282022259}
   - component: {fileID: 6047287332693120858}
   m_Layer: 5
-  m_Name: SHAPE_T-4
+  m_Name: SHAPE_T-3
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.999924, y: -39.999924}
+  m_AnchoredPosition: {x: 40, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1661970961282022259
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 3105162388502242597}
   - component: {fileID: 329366019673749256}
   m_Layer: 5
-  m_Name: SHAPE_T-5
+  m_Name: SHAPE_T-4
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 79.99992, y: -39.999924}
+  m_AnchoredPosition: {x: 80, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3105162388502242597
@@ -249,7 +249,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2303649688038308941}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 8827453026648016532}
   - component: {fileID: 6773110592500113866}
   m_Layer: 5
-  m_Name: SHAPE_T-4 (1)
+  m_Name: SHAPE_T-3 (1)
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.000057, y: 0.000034332275}
+  m_AnchoredPosition: {x: 40, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8827453026648016532
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 8916625613744562469}
   - component: {fileID: 9097720251185357378}
   m_Layer: 5
-  m_Name: SHAPE_T-5 (1)
+  m_Name: SHAPE_T-4 (1)
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 79.99993, y: 0.000034332275}
+  m_AnchoredPosition: {x: 80, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8916625613744562469
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 2519217019682428862}
   - component: {fileID: 3880836894511739235}
   m_Layer: 5
-  m_Name: SHAPE_T-2
+  m_Name: SHAPE_T-1
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2519217019682428862
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 6707608375661660570}
   - component: {fileID: 1713011177405926396}
   m_Layer: 5
-  m_Name: SHAPE_T-2 (1)
+  m_Name: SHAPE_T-1 (1)
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 40.000027}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6707608375661660570
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 4914461926524222929}
   - component: {fileID: 4931996978111118385}
   m_Layer: 5
-  m_Name: SHAPE_T-6
+  m_Name: SHAPE_T-5
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,7 +609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: -80.000015}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4914461926524222929
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 548074264971431800}
   - component: {fileID: 8836127016776015433}
   m_Layer: 5
-  m_Name: SHAPE_T-6 (1)
+  m_Name: SHAPE_T-5 (1)
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,7 +684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: -40.000057}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &548074264971431800
@@ -762,7 +762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -39.999958}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7621604616059344639
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 9101700308272778029}
   - component: {fileID: 571697035400252318}
   m_Layer: 5
-  m_Name: SHAPE_T-3 (1)
+  m_Name: SHAPE_T-2 (1)
   m_TagString: BlockChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -799,7 +799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0.000034332275}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9101700308272778029

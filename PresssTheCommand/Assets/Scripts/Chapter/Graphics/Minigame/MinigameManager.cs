@@ -205,6 +205,15 @@ public class MinigameManager : MonoBehaviour
         GameObject GameResultTitle = GameObject.Find("GameResultTitle"); ;
         GameObject GameResultInformation = GameObject.Find("GameResultInformation");
 
+        if (m_minigameClear)
+        {
+            GetComponent<AudioUnits>().PlayAudioArray(0);
+        }
+        else 
+        {
+            GetComponent<AudioUnits>().PlayAudioArray(1);
+        }
+
         m_resultUI.GetComponent<Image>().color = pannelBGColor;
         if (GameResultTitle) GameResultTitle.GetComponent<TMPro.TextMeshProUGUI>().SetText(titleText);
         if (GameResultInformation) GameResultInformation.GetComponent<TMPro.TextMeshProUGUI>().SetText(infoText);
