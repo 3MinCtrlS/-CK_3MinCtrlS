@@ -11,8 +11,9 @@ public class CutScene : MonoBehaviour
 {
     [SerializeField] private GameObject m_popup;
     [SerializeField] private GameObject[] m_cutSceneImages;
-    [SerializeField] private const int m_cutsceneCount = 5;
+    [SerializeField] private int m_cutsceneCount = 5;
     [SerializeField] private int m_currentSceneCount;
+    [SerializeField] private bool m_isMoving;
 
     enum SCENE_TYPE 
     {
@@ -45,7 +46,11 @@ public class CutScene : MonoBehaviour
 
         // 처음 화면만 활성화
         m_cutSceneImages[0].SetActive(true);
-        StartCoroutine(MovingScene());
+
+        if (m_isMoving) 
+        {
+            StartCoroutine(MovingScene());
+        }
     }
 
     private IEnumerator MovingScene() 
@@ -77,7 +82,11 @@ public class CutScene : MonoBehaviour
                 m_cutSceneImages[m_currentSceneCount].SetActive(false);
                 m_cutSceneImages[m_currentSceneCount + 1].SetActive(true);
                 m_currentSceneCount++;
-                StartCoroutine(MovingScene());
+
+                if (m_isMoving)
+                {
+                    StartCoroutine(MovingScene());
+                }
             }
             else if (m_currentSceneCount >= (int)SCENE_TYPE.SCENE_START_4) 
             {

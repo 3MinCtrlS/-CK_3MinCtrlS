@@ -127,6 +127,7 @@ public class MinigameCuttingLine : MonoBehaviour
         if (m_altIP && !m_altIPFinished) 
         {
             m_altIPFinished = true;
+            GetComponent<AudioUnits>().PlayAudio();
             SetValue(m_slider.value);
             SliderActivation();
             CheckQuest();
